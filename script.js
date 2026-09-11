@@ -18,7 +18,13 @@ function displayTasks() {
     priority.textContent = task.priority;
     priority.className = "priority";
 
-    row.append(name, priority);
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+      tasks = tasks.filter((t) => t !== task);
+      displayTasks();
+    });
+    row.append(name, priority, deleteButton);
     taskContainer.append(row);
   }
 }
